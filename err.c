@@ -78,6 +78,12 @@ void many_err(int err_code, ...)
 	}
 	else if (err_code == 9)
 	{
+		LNumber = va_arg(args, unsigned int);
+		instruction = va_arg(args, char *);
+		fprintf(stderr, "L%d: can't %s, stack too short\n", LNumber);
+	}
+	else if (err_code == 10)
+	{
 		fprintf(stderr, "L%d: division by zero\n", va_arg(args, unsigned int));
 	}
 	va_end(args);
