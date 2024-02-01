@@ -2,6 +2,8 @@
 #define MONTY_H
 
 #define _GUN_SOURCE
+#define _XOPEN_SOURCE 700
+#define _POSIX_C_SOURCE 200809L
 
 #include <string.h>
 #include <stdio.h>
@@ -41,20 +43,20 @@ typedef void (*op_fun)(stack_t **, unsigned int);
 
 /*file process*/
 void OpenMontyFile(char *FilePath);
-void ReadMontyFile(FILE *FileDescri);
+void ReadMontyFile(FILE *FileDescriptor);
 int ParseLine(char *buffer, int LNumber, int format);
 void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format);
-void COpcode(op_fun, char *opcode, char *value, int LNumber, int format);
+void CallOpcode(op_fun, char *opcode, char *value, int LNumber, int format);
 
 /*stack process*/
 stack_t *make_node(int x);
 void fr_node(void);
-void PstackContents(stack_t **, unsigned int);
-void AddNodeToStack(stack_t **, unsigned int);
+void print_st(stack_t **, unsigned int);
+void add_st(stack_t **, unsigned int);
 void add_qu(stack_t **, unsigned int);
 
-void PTopOfStack(stack_t **, unsigned int);
-void PopFromStack(stack_t **, unsigned int);
+void top_print(stack_t **, unsigned int);
+void (stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
 
