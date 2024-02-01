@@ -74,7 +74,7 @@ void many_err(int err_code, ...)
 	{
 		LNumber = va_arg(args, unsigned int);
 		instruction = va_arg(args, char *);
-		fprintf(stderr, "L%d: can't %s, stack too short\n", LNumber, instruction);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", LNumber);
 	}
 	else if (err_code == 9)
 	{
