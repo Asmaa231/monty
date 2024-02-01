@@ -42,7 +42,7 @@ void erro(int erro_code, ...)
 		fprintf(stderr, "L%d: usage: push integer\n", va_arg(args, int));
 	}
 	va_end(args);
-	free_nodes();
+	fr_node();
 	exit(EXIT_FAILURE);
 }
 
@@ -81,6 +81,6 @@ void many_err(int err_code, ...)
 		fprintf(stderr, "L%d: division by zero\n", va_arg(args, unsigned int));
 	}
 	va_end(args);
-	free_nodes();
+	fr_node();
 	exit(EXIT_FAILURE);
 }
