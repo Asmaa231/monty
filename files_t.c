@@ -140,8 +140,6 @@ void COpcode(op_fun funct, char *opcode, char *value, int LNumber, int format)
 		node = make_node(atoi(value) * flag);
 		if (format == 0)
 			funct(&node, LNumber);
-		if (format == 1)
-			add_qu(&node, LNumber);
 	}
 	else
 		funct(&head, LNumber);
