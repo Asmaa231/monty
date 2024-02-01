@@ -42,7 +42,7 @@ typedef void (*op_fun)(stack_t **, unsigned int);
 /*file process*/
 void OpenMontyFile(char *FilePath);
 void ReadMontyFile(FILE *FileDescriptor);
-int ParseLine(char *buffer, int LNumber, int format);
+int ParseLine(char *buffer, int LNumber, int format);
 void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format);
 void CallOpcode(op_fun, char *opcode, char *value, int LNumber, int format);
 
@@ -62,6 +62,6 @@ void nop(stack_t **, unsigned int);
 void add_node(stack_t **, unsigned int);
 
 /*error*/
-void erro(stack_t **, unsigned int);
-void many_err(stack_t **, unsigned int);
+void erro(int erro_code, ...);
+void many_err(int err_code, ...);
 #endif
