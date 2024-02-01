@@ -40,34 +40,9 @@ stack_t *make_node(int x)
 }
 
 /**
- *add_qu - function adds a node to a queue
- *@newnode: new node pointer
- *@LNum: opcode line number
+ *fr_node - function frees node
  *Return: void
  */
-void add_qu(stack_t **newnode, __attribute__((unused))unsigned int LNum)
-{
-	stack_t *temp;
-
-	if (newnode == NULL || *newnode == NULL)
-		exit(EXIT_FAILURE);
-	if (head == NULL)
-	{
-		head = *newnode;
-		return;
-	}
-	temp = head;
-	while (temp->next != NULL)
-		temp = temp->next;
-
-	temp->next = *newnode;
-	(*newnode)->prev = temp;
-}
-
-/**
- *fr_node - function free node
- *Return: void
-*/
 void fr_node(void)
 {
 	stack_t *temp;
@@ -77,7 +52,7 @@ void fr_node(void)
 
 	while (head != NULL)
 	{
-		temp == head;
+		temp = head;
 		head = head->next;
 		free(temp);
 	}
