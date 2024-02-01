@@ -46,7 +46,7 @@ void OpenMontyFile(char *FilePath);
 void ReadMontyFile(FILE *FileDescriptor);
 int ParseLine(char *buffer, int LNumber, int format);
 void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format);
-void CallOpcode(op_fun, char *opcode, char *value, int LNumber, int format);
+void COpcode(op_fun, char *opcode, char *value, int LNumber, int format);
 
 /*stack process*/
 stack_t *make_node(int x);
