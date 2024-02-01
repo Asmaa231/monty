@@ -2,8 +2,6 @@
 #define MONTY_H
 
 #define _GUN_SOURCE
-#define _XOPEN_SOURCE 700
-#define _POSIX_C_SOURCE 200809L
 
 #include <string.h>
 #include <stdio.h>
