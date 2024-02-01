@@ -46,7 +46,7 @@ void PstackContents(stack_t **stack, unsigned int LNumber)
 
 	while (Tem != NULL)
 	{
-		printf("%d\n", Tem->n);
+		printf("%d\n", Tem->x);
 		Tem = Tem->next;
 	}
 }
@@ -77,6 +77,5 @@ void PTopOfStack(stack_t **stack, unsigned int LNumber)
 {
 	if (stack == NULL || *stack == NULL)
 		more_err(6, LNumber);
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", (*stack)->x);
 }
-

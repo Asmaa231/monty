@@ -87,14 +87,6 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
 		{"nop", nop},
 		{"swap", swap},
 		{"add", add_node},
-		{"sub", sub_nodes},
-		{"div", div_nodes},
-		{"mul", mul_nodes},
-		{"mod", mod_nodes},
-		{"pchar", print_char},
-		{"pstr", print_str},
-		{"rotl", rotate_left},
-		{"rotr", rotate_right},
 		{NULL, NULL}
 	};
 
@@ -105,7 +97,7 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
 	{
 		if (strcmp(opcode, opcode_functions[i].opcode) == 0)
 		{
-			COpcode(opcode_functions[i].f, opcode, value, LNumber, format);
+			COpcode(opcode_functions[i].func, opcode, value, LNumber, format);
 			flag = 0;
 		}
 	}
