@@ -39,15 +39,13 @@ void swap(stack_t **st, unsigned int linenum)
 	(*st)->prev = temp;
 	temp->prev = NULL;
 	*st = temp;
-
 }
 
 /**
  *nop - function does nothing
  *@st: a pointer to a pointer to stack top node
  *@linenum: opcode line number
- *Return: void
-*/
+ */
 void nop(stack_t **st, unsigned int linenum)
 {
 	(void)st;
