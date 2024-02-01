@@ -7,27 +7,27 @@
  */
 void OpenMontyFile(char *FilePath)
 {
-	FILE *FileDescriptor = fopen(FilePath, "r");
+	FILE *FileDescri = fopen(FilePath, "r");
 
-	if (FilePath == NULL || FileDescriptor == NULL)
+	if (FilePath == NULL || FileDescri == NULL)
 		handle_file_error(2, FilePath);
 
-	ReadMontyFile(FileDescriptor);
-	fclose(FileDescriptor);
+	ReadMontyFile(FileDescri);
+	fclose(FileDescri);
 }
 
 /**
  * ReadMontyFile - Reads a Monty bytecode file.
- * @FileDescriptor: Pointer to the file descriptor.
+ * @FileDescri: Pointer to the file descriptor.
  * Return: void
  */
-void ReadMontyFile(FILE *FileDescriptor)
+void ReadMontyFile(FILE *FileDescri)
 {
 	int LNumber, format = 0;
 	char *buffer = NULL;
 	size_t buffer_size = 0;
 
-	for (LNumber = 1; getline(&buffer, &buffer_size, FileDescriptor) != -1; LNumber++)
+	for (LNumber = 1; getline(&buffer, &buffer_size, FileDescri) != -1; LNumber++)
 	{
 		format = ParseLine(buffer, LNumber, format);
 	}
@@ -80,13 +80,13 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
 	int flag;
 
 	instruction_t opcode_functions[] = {
-		{"push", push_node},
+		{"push", AddNodeToStack},
 		{"pall", PstackContents},
 		{"pint", PTopOfStack},
 		{"pop", PopFromStack},
 		{"nop", nop},
-		{"swap", swap_nodes},
-		{"add", AddNodeToStack},
+		{"swap", swap},
+		{"add", add_node},
 		{"sub", sub_nodes},
 		{"div", div_nodes},
 		{"mul", mul_nodes},
@@ -105,7 +105,7 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
 	{
 		if (strcmp(opcode, opcode_functions[i].opcode) == 0)
 		{
-			CallOpcode(opcode_functions[i].f, opcode, value, LNumber, format);
+			COpcode(opcode_functions[i].f, opcode, value, LNumber, format);
 			flag = 0;
 		}
 	}
@@ -115,8 +115,8 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
 
 
 /**
- * CallOpcode - Calls the required function for the opcode.
- * @function: Pointer to the function that is about to be called.
+ * COpcode - Calls the required function for the opcode.
+ * @funct: Pointer to the function that is about to be called.
  * @opcode: String representing the opcode.
  * @value: String representing a numeric value.
  * @LNumber: Line number for the instruction.
@@ -124,7 +124,7 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
  * If 1, nodes will be entered as a queue.
  */
 
-void CallOpcode(op_fun funct, char *opcode, char *value, int LNumber, int format)
+void COpcode(op_fun funct, char *opcode, char *value, int LNumber, int format)
 {
 	stack_t *node;
 	int flag;
@@ -154,4 +154,3 @@ void CallOpcode(op_fun funct, char *opcode, char *value, int LNumber, int format
 	else
 		funct(&head, LNumber);
 }
-
