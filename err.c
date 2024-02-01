@@ -51,8 +51,9 @@ void erro(int erro_code, ...)
  * @err_code: The error codes are the following:
  * (6) => When the stack is empty for pint.
  * (7) => When the stack is empty for pop.
- * (8) => When the stack is too short for an operation.
- * (9) => Division by zero.
+ * (8) => When the stack is empty for swap.
+ * (9) => When the stack is too short for an operation.
+ * (10) => Division by zero.
  */
 
 void many_err(int err_code, ...)
@@ -72,11 +73,15 @@ void many_err(int err_code, ...)
 	}
 	else if (err_code == 8)
 	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", va_arg(args, int));
+	}
+	else if (err_code == 9)
+	{
 		LNumber = va_arg(args, unsigned int);
 		instruction = va_arg(args, char *);
 		fprintf(stderr, "L%d: can't %s, stack too short\n", LNumber, instruction);
 	}
-	else if (err_code == 9)
+	else if (err_code == 10)
 	{
 		fprintf(stderr, "L%d: division by zero\n", va_arg(args, unsigned int));
 	}
