@@ -58,7 +58,6 @@ void erro(int erro_code, ...)
 void many_err(int err_code, ...)
 {
 	va_list args;
-	char *instruction;
 	int LNumber;
 
 	va_start(args, err_code);
@@ -73,14 +72,12 @@ void many_err(int err_code, ...)
 	else if (err_code == 8)
 	{
 		LNumber = va_arg(args, unsigned int);
-		instruction = va_arg(args, char *);
 		fprintf(stderr, "L%d: can't swap, stack too short\n", LNumber);
 	}
 	else if (err_code == 9)
 	{
 		LNumber = va_arg(args, unsigned int);
-		instruction = va_arg(args, char *);
-		fprintf(stderr, "L%d: can't %s, stack too short\n", LNumber);
+		fprintf(stderr, "L%d: can't add, stack too short\n", LNumber);
 	}
 	else if (err_code == 10)
 	{
