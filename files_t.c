@@ -10,7 +10,7 @@ void OpenMontyFile(char *FilePath)
 	FILE *FileDescri = fopen(FilePath, "r");
 
 	if (FilePath == NULL || FileDescri == NULL)
-		handle_file_error(2, FilePath);
+		erro(2, FilePath);
 
 	ReadMontyFile(FileDescri);
 	fclose(FileDescri);
@@ -49,7 +49,7 @@ int ParseLine(char *buffer, int LNumber, int format)
 	const char *delimiters = "\n ";
 
 	if (buffer == NULL)
-		handle_file_error(4);
+		erro(4);
 
 	opcode = strtok(buffer, delimiters);
 	if (opcode == NULL)
@@ -102,7 +102,7 @@ void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format)
 		}
 	}
 	if (flag == 1)
-		handle_file_error(3, LNumber, opcode);
+		erro(3, LNumber, opcode);
 }
 
 
@@ -131,17 +131,17 @@ void COpcode(op_fun funct, char *opcode, char *value, int LNumber, int format)
 			flag = -1;
 		}
 		if (value == NULL)
-			handle_file_error(5, LNumber);
+			erro(5, LNumber);
 		for (i = 0; value[i] != '\0'; i++)
 		{
 			if (isdigit(value[i]) == 0)
-				handle_file_error(5, LNumber);
+				erro(5, LNumber);
 		}
-		node = create_node(atoi(value) * flag);
+		node = make_node(atoi(value) * flag);
 		if (format == 0)
 			funct(&node, LNumber);
 		if (format == 1)
-			add_to_queue(&node, LNumber);
+			add_qu(&node, LNumber);
 	}
 	else
 		funct(&head, LNumber);

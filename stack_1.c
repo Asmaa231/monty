@@ -60,7 +60,7 @@ void PopFromStack(stack_t **stack, unsigned int LNumber)
 	stack_t *Tem;
 
 	if (stack == NULL || *stack == NULL)
-		more_err(7, LNumber);
+		many_err(7, LNumber);
 
 	Tem = *stack;
 	*stack = Tem->next;
@@ -76,6 +76,6 @@ void PopFromStack(stack_t **stack, unsigned int LNumber)
 void PTopOfStack(stack_t **stack, unsigned int LNumber)
 {
 	if (stack == NULL || *stack == NULL)
-		more_err(6, LNumber);
+		many_err(6, LNumber);
 	printf("%d\n", (*stack)->x);
 }
