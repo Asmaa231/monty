@@ -41,10 +41,10 @@ typedef void (*op_fun)(stack_t **, unsigned int);
 
 /*file process*/
 void OpenMontyFile(char *FilePath);
-void ReadMontyFile(FILE *FileDescriptor);
+void ReadMontyFile(FILE *FileDescri);
 int ParseLine(char *buffer, int LNumber, int format);
 void FindOpcodeFunction(char *opcode, char *value, int LNumber, int format);
-void CallOpcode(op_fun, char *opcode, char *value, int LNumber, int format);
+void COpcode(op_fun, char *opcode, char *value, int LNumber, int format);
 
 /*stack process*/
 stack_t *make_node(int x);

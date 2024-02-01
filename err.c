@@ -48,7 +48,7 @@ void erro(int erro_code, ...)
 
 /**
  * many_err - Handles errors.
- * @erro_code: The error codes are the following:
+ * @err_code: The error codes are the following:
  * (6) => When the stack is empty for pint.
  * (7) => When the stack is empty for pop.
  * (8) => When the stack is too short for an operation.
