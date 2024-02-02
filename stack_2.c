@@ -10,7 +10,7 @@ void add_node(stack_t **st, unsigned int linenum)
 	int total;
 
 	if (st == NULL || *st == NULL || (*st)->next == NULL)
-		many_err(8, linenum, "add");
+		many_err(9, linenum, "add");
 
 	(*st) = (*st)->next;
 	total = (*st)->x + (*st)->prev->x;
