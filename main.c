@@ -1,5 +1,5 @@
 #include "monty.h"
-/*stack_t *head = NULL;*/
+stack_t *head = NULL;
 
 /**
  *main - function as entry point
@@ -56,4 +56,29 @@ void fr_node(void)
 		head = head->next;
 		free(temp);
 	}
+}
+
+/**
+ *add_qu - function adds a node to a queue
+ *@newnode: new node pointer
+ *@LNum: opcode line number
+ *Return: void
+ */
+void add_qu(stack_t **newnode, __attribute__((unused))unsigned int LNum)
+{
+	stack_t *temp;
+
+	if (newnode == NULL || *newnode == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *newnode;
+		return;
+	}
+	temp = head;
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *newnode;
+	(*newnode)->prev = temp;
 }
